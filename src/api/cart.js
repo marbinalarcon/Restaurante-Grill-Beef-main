@@ -10,3 +10,9 @@ export function addProductCart(id) {
   products.push(id);
   localStorage.setItem(PRODUCT_CART, JSON.stringify(products));
 }
+
+export function removeProductCartApi(index) {
+  const idProducts = getProductsCart();
+  idProducts.splice(index, 1);
+  localStorage.setItem(PRODUCT_CART, JSON.stringify(idProducts));
+}
