@@ -2,12 +2,18 @@ import React from "react";
 import { Form, Button, Checkbox } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
+
 import { useUser } from "../../../../hooks";
 import "./AddEditUserForm.scss";
 
 export function AddEditUserForm(props) {
+  const notify = () => {
+    toast.success("Exitoso!");
+  };
   const { onClose, onRefetch, user } = props;
   const { addUser, updateUser } = useUser();
+
   const formik = useFormik({
     initialValues: initialValues(user),
     validationSchema: Yup.object(user ? updateValidation() : newValidation()),
@@ -91,6 +97,7 @@ export function AddEditUserForm(props) {
 
         <Button
           type="submit"
+          onClick={() => notify()}
           content={user ? "Actualizar" : "Crear"}
           primary
           fluid

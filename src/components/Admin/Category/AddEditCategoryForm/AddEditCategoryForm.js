@@ -3,10 +3,15 @@ import { Form, Image, Button } from "semantic-ui-react";
 import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
+
 import { useCategory } from "../../../../hooks";
 import "./AddEditCategoryForm.scss";
 
 export function AddEditCategoryForm(props) {
+  const notify = () => {
+    toast.success("Exitoso!");
+  };
   const { onClose, onRefetch, category } = props;
   const [previewImage, setPreviewImage] = useState(category?.image || null);
   const { addCategory, updateCategory } = useCategory();
@@ -64,6 +69,7 @@ export function AddEditCategoryForm(props) {
         content={category ? "Actualizar" : "Crear"}
         primary
         fluid
+        onClick={() => notify()}
       />
     </Form>
   );

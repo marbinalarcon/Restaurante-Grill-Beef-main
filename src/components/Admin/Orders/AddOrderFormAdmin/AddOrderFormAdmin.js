@@ -3,11 +3,16 @@ import { Form, Image, Dropdown, Button } from "semantic-ui-react";
 import { map } from "lodash";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import "./AddOrderFormAdmin.scss";
 import { useProduct, useOrder } from "../../../../hooks";
 
 export function AddOrderFormAdmin(props) {
+  const notify = () => {
+    toast.success("Producto añadido exitosamente");
+  };
+
   const { idTable, openCloseModal, onReloadOrders } = props;
   const [productsFormat, setProductsFormat] = useState([]);
   const [productsData, setProductsData] = useState([]);
@@ -89,6 +94,7 @@ export function AddOrderFormAdmin(props) {
 
       <Button
         type="submit"
+        onClick={() => notify()}
         primary
         fluid
         content="Añadir productos a la mesa"

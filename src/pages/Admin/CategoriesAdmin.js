@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Loader } from "semantic-ui-react";
+
 import {
   HeaderPage,
   TableCategoryAdmin,

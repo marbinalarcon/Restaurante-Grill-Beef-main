@@ -4,10 +4,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Form, Image, Button, Dropdown, Checkbox } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
+
 import { useCategory, useProduct } from "../../../../hooks";
 import "./AddEditProductForm.scss";
 
 export function AddEditProductForm(props) {
+  const notify = () => {
+    toast.success("Exitoso!");
+  };
+
   const { onClose, onRefetch, product } = props;
   const { categories, getCategories } = useCategory();
   const [categoriesFormat, setCategoriesFormat] = useState([]);
@@ -103,6 +109,7 @@ export function AddEditProductForm(props) {
       <Button
         type="submit"
         primary
+        onClick={() => notify()}
         fluid
         content={product ? "Actualizar" : "Crear"}
       />

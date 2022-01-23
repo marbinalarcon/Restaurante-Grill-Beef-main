@@ -2,10 +2,15 @@ import React from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
+
 import { useTable } from "../../../../hooks";
 import "./AddEditTableForm.scss";
 
 export function AddEditTableForm(props) {
+  const notify = () => {
+    toast.success("Exitoso!");
+  };
   const { onClose, onRefetch, table } = props;
   const { addTables, updateTables } = useTable();
   const formik = useFormik({
@@ -36,6 +41,7 @@ export function AddEditTableForm(props) {
         type="submit"
         primary
         fluid
+        onClick={() => notify()}
         content={table ? "Actualizar" : "Crear"}
       />
     </Form>
