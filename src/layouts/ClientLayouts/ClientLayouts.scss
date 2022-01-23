@@ -1,0 +1,19 @@
+.client-layout-bg {
+  background-color: aqua;
+  min-height: 100vh;
+  min-width: 100vh;
+  padding: 1em 0;
+}
+
+.client-layout {
+  background-color: azure;
+  padding: 10px;
+
+  &__header {
+    display: flex;
+    align-items: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
