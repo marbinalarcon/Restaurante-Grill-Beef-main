@@ -5,6 +5,7 @@ import { removeProductCartApi } from "../../../api/cart";
 import { useParams, useNavigate } from "react-router-dom";
 
 import "./ListProductCart.scss";
+import { toast } from "react-toastify";
 
 export function ListProductCart(props) {
   const { products, onReloadCart } = props;
@@ -12,6 +13,7 @@ export function ListProductCart(props) {
   const removeProduct = (index) => {
     removeProductCartApi(index);
     onReloadCart();
+    toast.info("Eliminado exitosasmente");
   };
 
   return (
