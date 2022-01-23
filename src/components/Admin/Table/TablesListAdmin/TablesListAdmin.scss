@@ -1,0 +1,16 @@
+.tables-list-admin {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__reaload-toggle {
+    position: absolute !important;
+    top: 38px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-right: 20px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.ui.input {
+  input {
+    background-color: rgb(0, 255, 255) !important;
+    border-color: rgb(0, 17, 255) !important;
+    border-radius: 10px !important;
+
+    &:focus {
+      background-color: bisque !important;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2) !important;
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2) !important;
+      -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2) !important;
+      color: black !important;
+    }
+  }
+}
