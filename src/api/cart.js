@@ -16,3 +16,7 @@ export function removeProductCartApi(index) {
   idProducts.splice(index, 1);
   localStorage.setItem(PRODUCT_CART, JSON.stringify(idProducts));
 }
+
+export function cleanProductCartApi() {
+  localStorage.removeItem(PRODUCT_CART);
+}

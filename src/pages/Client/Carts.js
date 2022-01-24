@@ -1,47 +1,47 @@
-import React, {useState, useEffect} from 'react';
-import {Button} from "semantic-ui-react";
-import {Link, useParams} from "react-router-dom";
-import {size} from "lodash";
-import {useProduct} from "../../hooks";
+import React, { useState, useEffect } from "react";
+import { Button } from "semantic-ui-react";
+import { Link, useParams } from "react-router-dom";
+import { size } from "lodash";
+import { useProduct } from "../../hooks";
 import { getProductsCart } from "../../api/cart";
-import {ListProductCart} from "../../components/Client";
+import { ListProductCart } from "../../components/Client";
 
 export function Carts() {
-    const [products, setProducts] = useState(null);
-    const [reloadCart, setReloadCart] = useState(false);
-    const {getProductsById} = useProduct();
-    const {tableNumber} = useParams();
+  const [products, setProducts] = useState(null);
+  const [reloadCart, setReloadCart] = useState(false);
+  const { getProductsById } = useProduct();
+  const { tableNumber } = useParams();
 
-    useEffect(() => {
-      (async () => {
-          const idProductsCart = getProductsCart();
-          
-          const productsArray = [];
-          for await (const idProduct of idProductsCart) {
-              const response = await getProductsById(idProduct);
-              productsArray.push(response);
-          }
-          setProducts(productsArray);
-      })();
-    }, [reloadCart]);
+  useEffect(() => {
+    (async () => {
+      const idProductsCart = getProductsCart();
 
-    const  onReloadCart = () => setReloadCart((prev) => !prev);
-    
+      const productsArray = [];
+      for await (const idProduct of idProductsCart) {
+        const response = await getProductsById(idProduct);
+        productsArray.push(response);
+      }
+      setProducts(productsArray);
+    })();
+  }, [reloadCart]);
+
+  const onReloadCart = () => setReloadCart((prev) => !prev);
+
   return (
-  <div>
+    <div>
       <h1>Carrito</h1>
       {!products ? (
-          <p>Cargando...</p>
+        <p>Cargando...</p>
       ) : size(products) === 0 ? (
-          <div style={{textAling: "center"}}>
-              <p>Tu carrito esta vacio</p>
-              <Link to={`/client/${tableNumber}/orders`}>
-                  <Button primary>Ver pedidos</Button>
-              </Link>
-          </div>
+        <div style={{ textAling: "center" }}>
+          <p>Tu carrito esta vacio</p>
+          <Link to={`/client/${tableNumber}/orders`}>
+            <Button primary>Ver pedidos</Button>
+          </Link>
+        </div>
       ) : (
-          <ListProductCart products={products} onReloadCart={onReloadCart} />
+        <ListProductCart products={products} onReloadCart={onReloadCart} />
       )}
-  </div>
+    </div>
   );
 }

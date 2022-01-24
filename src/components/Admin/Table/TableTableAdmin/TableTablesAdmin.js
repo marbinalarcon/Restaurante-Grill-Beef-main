@@ -19,7 +19,11 @@ export function TableTablesAdmin(props) {
         {map(tables, (table, index) => (
           <Table.Row key={index}>
             <Table.Cell> {table.number}</Table.Cell>
-            <Actions table={table} updateTable={updateTable} deleteTable = {deleteTable}/>
+            <Actions
+              table={table}
+              updateTable={updateTable}
+              deleteTable={deleteTable}
+            />
           </Table.Row>
         ))}
       </Table.Body>
@@ -28,9 +32,12 @@ export function TableTablesAdmin(props) {
 }
 
 function Actions(props) {
-  const { table, updateTable, deleteTable} = props;
+  const { table, updateTable, deleteTable } = props;
   return (
     <Table.Cell textAlign="right">
+      <Button icon onClick={() => console.log(table)}>
+        <Icon name="qrcode" />
+      </Button>
       <Button icon onClick={() => updateTable(table)}>
         <Icon name="pencil" />
       </Button>
